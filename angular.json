@@ -60,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "handover-documentation-unique:build:production"
+              "buildTarget": "handover-documentation-unique:build:production"
             },
             "development": {
-              "browserTarget": "handover-documentation-unique:build:development"
+              "buildTarget": "handover-documentation-unique:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -71,7 +71,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "handover-documentation-unique:build"
+            "buildTarget": "handover-documentation-unique:build"
           }
         },
         "test": {
