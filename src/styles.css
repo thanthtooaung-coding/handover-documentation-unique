@@ -1,9 +1,6 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global Styles with Myanmar Font Support */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Myanmar:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-/* Global Styles */
 * {
   margin: 0;
   padding: 0;
@@ -11,10 +8,20 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Noto Sans Myanmar", "Myanmar Text", "Pyidaungsu", sans-serif;
   background-color: #1a1a1a;
   color: #ffffff;
   line-height: 1.6;
+  font-size: 16px;
+}
+
+/* Added Myanmar-specific font rendering */
+.myanmar-text {
+  font-family: "Noto Sans Myanmar", "Myanmar Text", "Pyidaungsu", sans-serif;
+  font-feature-settings: "liga" 1, "calt" 1;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .container {
@@ -29,6 +36,7 @@ body {
   border-radius: 8px;
   cursor: pointer;
   font-size: 16px;
+  font-family: "Noto Sans Myanmar", "Myanmar Text", "Pyidaungsu", sans-serif;
   transition: all 0.3s ease;
   text-decoration: none;
   display: inline-block;
@@ -50,34 +58,55 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
+/* Added section styling with Myanmar font support */
 .section-title {
   font-size: 2.5rem;
   text-align: center;
   margin-bottom: 3rem;
   color: #ffffff;
+  font-family: "Noto Sans Myanmar", "Myanmar Text", "Pyidaungsu", sans-serif;
+  font-weight: 600;
 }
 
-.learning-section, .tasks-section {
+.learning-section,
+.tasks-section {
   padding: 5rem 0;
   background-color: #1a1a1a;
 }
 
 .learning-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 2rem;
+  margin-top: 2rem;
 }
 
 .learning-card {
   background-color: #2a2a2a;
   padding: 2rem;
   border-radius: 12px;
-  text-align: center;
+  text-align: left;
   transition: transform 0.3s ease;
+  border: 1px solid #333;
+  cursor: pointer;
 }
 
 .learning-card:hover {
   transform: translateY(-5px);
+  border-color: #555;
+}
+
+.learning-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #ffffff;
+  font-family: "Noto Sans Myanmar", "Myanmar Text", "Pyidaungsu", sans-serif;
+}
+
+.learning-card p {
+  color: #cccccc;
+  margin-bottom: 1.5rem;
+  font-family: "Noto Sans Myanmar", "Myanmar Text", "Pyidaungsu", sans-serif;
 }
 
 .tasks-list {
@@ -92,6 +121,7 @@ body {
   padding: 1.5rem;
   background-color: #2a2a2a;
   border-radius: 12px;
+  border: 1px solid #333;
 }
 
 .task-number {
@@ -104,8 +134,124 @@ body {
   align-items: center;
   justify-content: center;
   font-weight: bold;
+  flex-shrink: 0;
 }
 
-.task-status.completed { color: #4ade80; }
-.task-status.in-progress { color: #fbbf24; }
-.task-status.pending { color: #f87171; }
+.task-content h3 {
+  font-family: "Noto Sans Myanmar", "Myanmar Text", "Pyidaungsu", sans-serif;
+  margin-bottom: 0.5rem;
+}
+
+.task-content p {
+  font-family: "Noto Sans Myanmar", "Myanmar Text", "Pyidaungsu", sans-serif;
+  color: #cccccc;
+  margin-bottom: 0.5rem;
+}
+
+.task-status {
+  font-weight: 600;
+  font-family: "Noto Sans Myanmar", "Myanmar Text", "Pyidaungsu", sans-serif;
+}
+
+.task-status.completed {
+  color: #4ade80;
+}
+.task-status.in-progress {
+  color: #fbbf24;
+}
+.task-status.pending {
+  color: #f87171;
+}
+
+/* Added hero section styling */
+.hero {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  padding-top: 80px;
+}
+
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero-title {
+  font-size: 4rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  background: linear-gradient(45deg, #ffffff, #cccccc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: "Noto Sans Myanmar", "Myanmar Text", "Pyidaungsu", sans-serif;
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #cccccc;
+  line-height: 1.8;
+  font-family: "Noto Sans Myanmar", "Myanmar Text", "Pyidaungsu", sans-serif;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Added header styling */
+.header {
+  background-color: #2a2a2a;
+  padding: 1rem 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  border-bottom: 1px solid #333;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo h2 {
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-family: "Noto Sans Myanmar", "Myanmar Text", "Pyidaungsu", sans-serif;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-family: "Noto Sans Myanmar", "Myanmar Text", "Pyidaungsu", sans-serif;
+}
+
+.nav-links a:hover {
+  color: #cccccc;
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .nav-links {
+    gap: 1rem;
+  }
+
+  .learning-grid {
+    grid-template-columns: 1fr;
+  }
+}

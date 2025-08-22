@@ -1,0 +1,160 @@
+<div class="tasks-container">
+  <header class="tasks-header">
+    <h1 class="myanmar-text">ကျန်ရှိသောလုပ်ငန်းများ</h1>
+    <p class="myanmar-text">လွှဲပြောင်းမှုလုပ်ငန်းစဉ်အတွက် လုပ်ဆောင်ရမည့်အရာများ</p>
+    <div class="date-info">
+      <span class="myanmar-text">ရက်စွဲ: {{ currentDate }}</span>
+    </div>
+  </header>
+
+  <!-- Pre-Handover Tasks -->
+  <section class="task-section">
+    <div class="section-header">
+      <h2 class="myanmar-text">လွှဲပြောင်းမှုမတိုင်မီ လုပ်ငန်းများ</h2>
+      <div class="progress-indicator">
+        <span class="myanmar-text">{{ getCompletionPercentage(preHandoverTasks) }}% ပြီးစီး</span>
+        <div class="progress-bar">
+          <div class="progress-fill" [style.width.%]="getCompletionPercentage(preHandoverTasks)"></div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="task-list">
+      <div class="task-item" *ngFor="let task of preHandoverTasks; let i = index" 
+           [class.completed]="task.completed"
+           [class]="getPriorityClass(task.priority)">
+        <div class="task-checkbox">
+          <input type="checkbox" 
+                 [checked]="task.completed" 
+                 (change)="toggleTaskCompletion(preHandoverTasks, i)">
+        </div>
+        <div class="task-content">
+          <h3 class="myanmar-text">{{ task.task }}</h3>
+          <p class="myanmar-text">{{ task.description }}</p>
+          <span class="priority-badge">{{ task.priority }}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- During Handover Tasks -->
+  <section class="task-section">
+    <div class="section-header">
+      <h2 class="myanmar-text">လွှဲပြောင်းမှုအတွင်း လုပ်ငန်းများ</h2>
+      <div class="progress-indicator">
+        <span class="myanmar-text">{{ getCompletionPercentage(duringHandoverTasks) }}% ပြီးစီး</span>
+        <div class="progress-bar">
+          <div class="progress-fill" [style.width.%]="getCompletionPercentage(duringHandoverTasks)"></div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="task-list">
+      <div class="task-item" *ngFor="let task of duringHandoverTasks; let i = index" 
+           [class.completed]="task.completed"
+           [class]="getPriorityClass(task.priority)">
+        <div class="task-checkbox">
+          <input type="checkbox" 
+                 [checked]="task.completed" 
+                 (change)="toggleTaskCompletion(duringHandoverTasks, i)">
+        </div>
+        <div class="task-content">
+          <h3 class="myanmar-text">{{ task.task }}</h3>
+          <p class="myanmar-text">{{ task.description }}</p>
+          <span class="priority-badge">{{ task.priority }}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Post-Handover Tasks -->
+  <section class="task-section">
+    <div class="section-header">
+      <h2 class="myanmar-text">လွှဲပြောင်းမှုပြီးနောက် လုပ်ငန်းများ</h2>
+      <div class="progress-indicator">
+        <span class="myanmar-text">{{ getCompletionPercentage(postHandoverTasks) }}% ပြီးစီး</span>
+        <div class="progress-bar">
+          <div class="progress-fill" [style.width.%]="getCompletionPercentage(postHandoverTasks)"></div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="task-list">
+      <div class="task-item" *ngFor="let task of postHandoverTasks; let i = index" 
+           [class.completed]="task.completed"
+           [class]="getPriorityClass(task.priority)">
+        <div class="task-checkbox">
+          <input type="checkbox" 
+                 [checked]="task.completed" 
+                 (change)="toggleTaskCompletion(postHandoverTasks, i)">
+        </div>
+        <div class="task-content">
+          <h3 class="myanmar-text">{{ task.task }}</h3>
+          <p class="myanmar-text">{{ task.description }}</p>
+          <span class="priority-badge">{{ task.priority }}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Critical Items -->
+  <section class="critical-section">
+    <h2 class="myanmar-text">အရေးကြီးသောအချက်များ</h2>
+    <div class="critical-list">
+      <div class="critical-item" *ngFor="let item of criticalItems">
+        <div class="critical-header">
+          <h3>{{ item.item }}</h3>
+          <span class="critical-badge">အရေးကြီး</span>
+        </div>
+        <p class="myanmar-text description">{{ item.description }}</p>
+        <div class="action-required">
+          <strong class="myanmar-text">လုပ်ဆောင်ရမည်:</strong>
+          <p class="myanmar-text">{{ item.action }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Future Enhancements -->
+  <section class="future-section">
+    <h2 class="myanmar-text">အနာဂတ်တွင် ထည့်သွင်းရမည့်အရာများ</h2>
+    <div class="enhancement-grid">
+      <div class="enhancement-card" *ngFor="let enhancement of futureEnhancements"
+           [class]="getPriorityClass(enhancement.priority)">
+        <h3>{{ enhancement.feature }}</h3>
+        <p class="myanmar-text">{{ enhancement.description }}</p>
+        <span class="priority-badge">{{ enhancement.priority }}</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Summary -->
+  <section class="summary-section">
+    <h2 class="myanmar-text">အကျဉ်းချုပ်</h2>
+    <div class="summary-stats">
+      <div class="stat-card">
+        <div class="stat-number">{{ preHandoverTasks.length }}</div>
+        <div class="stat-label myanmar-text">မတိုင်မီလုပ်ငန်းများ</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">{{ duringHandoverTasks.length }}</div>
+        <div class="stat-label myanmar-text">အတွင်းလုပ်ငန်းများ</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">{{ postHandoverTasks.length }}</div>
+        <div class="stat-label myanmar-text">ပြီးနောက်လုပ်ငန်းများ</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">{{ criticalItems.length }}</div>
+        <div class="stat-label myanmar-text">အရေးကြီးအချက်များ</div>
+      </div>
+    </div>
+    
+    <div class="summary-note">
+      <p class="myanmar-text">
+        ဤစာရင်းသည် လွှဲပြောင်းမှုလုပ်ငန်းစဉ်ကို ချောမွေ့စေရန်အတွက် ပြုစုထားပါသည်။ 
+        အရေးကြီးသောအချက်များကို ဦးစားပေး၍ လုပ်ဆောင်ပါ။
+      </p>
+    </div>
+  </section>
+</div>

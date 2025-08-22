@@ -1,0 +1,190 @@
+<div class="detail-container">
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar">
+    <div class="sidebar-content">
+      <div *ngFor="let item of sidebarItems" class="sidebar-section">
+        <h3 
+          class="sidebar-title myanmar-text"
+          [class.active]="currentSection === item.route"
+          (click)="navigateToSection(item.route)">
+          {{ item.title }}
+        </h3>
+        <ul class="sidebar-subsections" *ngIf="currentSection === item.route">
+          <li *ngFor="let section of item.sections">
+            <a 
+              class="myanmar-text subsection-link"
+              (click)="scrollToSection(section.id)">
+              {{ section.title }}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content Area -->
+  <main class="main-content">
+    <div class="content-wrapper">
+      <!-- Introduction Content -->
+      <div *ngIf="currentSection === 'introduction'" class="content-section">
+        <h1 class="page-title myanmar-text">Project မိတ်ဆက်</h1>
+        
+        <section id="overview" class="content-block">
+          <h2 class="myanmar-text">ခြုံငုံသုံးသပ်ချက်</h2>
+          <p class="myanmar-text">
+            ဤစီမံကိန်းသည် လွှဲပြောင်းမှုမှတ်တမ်းများကို စနစ်တကျ စီမံခန့်ခွဲရန်အတွက် 
+            ဖန်တီးထားသော Angular အပ်ပလီကေးရှင်းဖြစ်သည်။ ၎င်းသည် အဖွဲ့အစည်းများအတွက် 
+            ပရောဂျက်များ၊ လုပ်ငန်းစဉ်များနှင့် အသိပညာများကို ထိရောက်စွာ မှတ်တမ်းတင်ရန် 
+            ကူညီပေးသည်။
+          </p>
+        </section>
+
+        <section id="objectives" class="content-block">
+          <h2 class="myanmar-text">ရည်မှန်းချက်များ</h2>
+          <ul class="myanmar-text objective-list">
+            <li>လွှဲပြောင်းမှုလုပ်ငန်းစဉ်ကို ပိုမိုထိရောက်စေရန်</li>
+            <li>အသိပညာများကို စနစ်တကျ မှတ်တမ်းတင်ရန်</li>
+            <li>အဖွဲ့အစည်းအတွင်း ဆက်သွယ်မှုကို မြှင့်တင်ရန်</li>
+            <li>အချိန်နှင့် အရင်းအမြစ်များကို ချွေတာရန်</li>
+          </ul>
+        </section>
+
+        <section id="features" class="content-block">
+          <h2 class="myanmar-text">အဓိကအင်္ဂါရပ်များ</h2>
+          <div class="feature-grid">
+            <div class="feature-card">
+              <h3 class="myanmar-text">လေ့လာရန်အကြောင်းအရာများ</h3>
+              <p class="myanmar-text">စီမံကိန်းဆိုင်ရာ အသိပညာများကို အမျိုးအစားခွဲ၍ မှတ်တမ်းတင်ခြင်း</p>
+            </div>
+            <div class="feature-card">
+              <h3 class="myanmar-text">လုပ်ငန်းများ စီမံခန့်ခွဲမှု</h3>
+              <p class="myanmar-text">လွှဲပြောင်းရမည့် လုပ်ငန်းများကို စာရင်းပြုစု၍ ခြေရာခံခြင်း</p>
+            </div>
+            <div class="feature-card">
+              <h3 class="myanmar-text">Myanmar Language Support</h3>
+              <p class="myanmar-text">မြန်မာဘာသာဖြင့် အပြည့်အစုံ အသုံးပြုနိုင်ခြင်း</p>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Technologies Content -->
+      <div *ngIf="currentSection === 'technologies'" class="content-section">
+        <h1 class="page-title myanmar-text">နည်းပညာများ</h1>
+        
+        <section id="frontend" class="content-block">
+          <h2 class="myanmar-text">Frontend နည်းပညာများ</h2>
+          <div class="tech-list">
+            <div class="tech-item">
+              <h3>Angular 17+</h3>
+              <p class="myanmar-text">Modern Angular framework with standalone components နှင့် latest features များ</p>
+            </div>
+            <div class="tech-item">
+              <h3>TypeScript</h3>
+              <p class="myanmar-text">Type-safe JavaScript development အတွက် အသုံးပြုထားသည်</p>
+            </div>
+            <div class="tech-item">
+              <h3>CSS3 & Flexbox</h3>
+              <p class="myanmar-text">Responsive design နှင့် modern styling အတွက်</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="backend" class="content-block">
+          <h2 class="myanmar-text">Backend နည်းပညာများ</h2>
+          <div class="tech-list">
+            <div class="tech-item">
+              <h3>Node.js</h3>
+              <p class="myanmar-text">Server-side JavaScript runtime environment</p>
+            </div>
+            <div class="tech-item">
+              <h3>Express.js</h3>
+              <p class="myanmar-text">Web application framework for Node.js</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="database" class="content-block">
+          <h2 class="myanmar-text">ဒေတာဘေ့စ်</h2>
+          <div class="tech-list">
+            <div class="tech-item">
+              <h3>MongoDB</h3>
+              <p class="myanmar-text">NoSQL database for flexible data storage</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="devops" class="content-block">
+          <h2 class="myanmar-text">DevOps & Deployment</h2>
+          <div class="tech-list">
+            <div class="tech-item">
+              <h3>Git</h3>
+              <p class="myanmar-text">Version control system</p>
+            </div>
+            <div class="tech-item">
+              <h3>GitHub</h3>
+              <p class="myanmar-text">Code repository နှင့် collaboration platform</p>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Processes Content -->
+      <div *ngIf="currentSection === 'processes'" class="content-section">
+        <h1 class="page-title myanmar-text">လုပ်ငန်းစဉ်များ</h1>
+        
+        <section id="workflow" class="content-block">
+          <h2 class="myanmar-text">Development Workflow</h2>
+          <div class="process-steps">
+            <div class="step">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <h3 class="myanmar-text">Requirements Analysis</h3>
+                <p class="myanmar-text">လိုအပ်ချက်များကို သေချာစွာ ခွဲခြမ်းစိတ်ဖြာခြင်း</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <h3 class="myanmar-text">Design & Planning</h3>
+                <p class="myanmar-text">UI/UX design နှင့် technical architecture ပြုစုခြင်း</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <h3 class="myanmar-text">Development</h3>
+                <p class="myanmar-text">Feature များကို အဆင့်ဆင့် ဖွံ့ဖြိုးတည်ဆောက်ခြင်း</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="code-review" class="content-block">
+          <h2 class="myanmar-text">Code Review လုပ်ငန်းစဉ်</h2>
+          <p class="myanmar-text">
+            Code quality ကို သေချာစေရန်အတွက် peer review လုပ်ငန်းစဉ်ကို လိုက်နာရမည်။
+            Pull Request တိုင်းကို အနည်းဆုံး developer တစ်ဦးက review လုပ်ရမည်။
+          </p>
+        </section>
+
+        <section id="testing" class="content-block">
+          <h2 class="myanmar-text">Testing လုပ်ငန်းစဉ်</h2>
+          <ul class="myanmar-text">
+            <li>Unit Testing - Individual components များကို test လုပ်ခြင်း</li>
+            <li>Integration Testing - Components များ အချင်းချင်း ပေါင်းစပ်မှုကို test လုပ်ခြင်း</li>
+            <li>End-to-End Testing - User workflow တစ်ခုလုံးကို test လုပ်ခြင်း</li>
+          </ul>
+        </section>
+
+        <section id="deployment" class="content-block">
+          <h2 class="myanmar-text">Deployment လုပ်ငန်းစဉ်</h2>
+          <p class="myanmar-text">
+            Production environment သို့ deploy လုပ်ရာတွင် staging environment တွင် 
+            အရင် test လုပ်ပြီးမှ production သို့ deploy လုပ်ရမည်။
+          </p>
+        </section>
+      </div>
+    </div>
+  </main>
+</div>
