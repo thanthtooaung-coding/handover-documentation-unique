@@ -1,0 +1,17 @@
+<section id="tasks" class="tasks-section">
+  <div class="container">
+    <h2 class="section-title">လုပ်ငန်းများ</h2>
+    <div class="tasks-list">
+      <div class="task-item" *ngFor="let task of tasks; let i = index">
+        <div class="task-number">{{ i + 1 }}</div>
+        <div class="task-content">
+          <h3>{{ task.title }}</h3>
+          <p>{{ task.description }}</p>
+          <div class="task-status" [class]="task.status">
+            {{ getStatusText(task.status) }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

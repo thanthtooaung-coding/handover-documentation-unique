@@ -1,0 +1,13 @@
+<section id="learning" class="learning-section">
+  <div class="container">
+    <h2 class="section-title">သင်ခန်းစာများ</h2>
+    <div class="learning-grid">
+      <div class="learning-card" *ngFor="let lesson of lessons">
+        <div class="card-icon">📚</div>
+        <h3>{{ lesson.title }}</h3>
+        <p>{{ lesson.description }}</p>
+        <button class="btn btn-primary">လေ့လာရန်</button>
+      </div>
+    </div>
+  </div>
+</section>
