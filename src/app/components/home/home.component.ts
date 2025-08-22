@@ -11,7 +11,6 @@ import { TasksSectionComponent } from "../tasks-section/tasks-section.component"
   template: `
     <app-hero></app-hero>
     <app-learning-section></app-learning-section>
-    <app-tasks-section></app-tasks-section>
   `,
 })
 export class HomeComponent {}
