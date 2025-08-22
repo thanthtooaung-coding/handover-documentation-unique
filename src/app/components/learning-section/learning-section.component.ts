@@ -14,7 +14,7 @@ export class LearningSection {
 
   lessons = [
     {
-      title: "Project မိတ်ဆက်",
+      title: "Introduction",
       description: "စီမံကိန်း၏ အခြေခံအချက်အလက်များနှင့် ရည်မှန်းချက်များ",
       route: "introduction",
     },

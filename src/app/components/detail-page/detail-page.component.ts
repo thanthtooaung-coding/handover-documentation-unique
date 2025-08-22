@@ -14,12 +14,12 @@ export class DetailPageComponent implements OnInit {
 
   sidebarItems = [
     {
-      title: "Project မိတ်ဆက်",
+      title: "Introduction",
       route: "introduction",
       sections: [
-        { title: "ခြုံငုံသုံးသပ်ချက်", id: "overview" },
-        { title: "ရည်မှန်းချက်များ", id: "objectives" },
-        { title: "အဓိကအင်္ဂါရပ်များ", id: "features" },
+        { title: "Overview", id: "overview" },
+        { title: "Objectives", id: "objectives" },
+        { title: "Features", id: "features" },
       ],
     },
     {
