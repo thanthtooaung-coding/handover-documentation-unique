@@ -27,7 +27,7 @@
     <div class="content-wrapper">
       <!-- Introduction Content -->
       <div *ngIf="currentSection === 'introduction'" class="content-section">
-        <h1 class="page-title myanmar-text">စီမံကိန်းမိတ်ဆက်</h1>
+        <h1 class="page-title myanmar-text">Introduction</h1>
         
         <section id="overview" class="content-block">
           <h2 class="myanmar-text">Overview</h2>
@@ -267,6 +267,66 @@ docker run -d -p 4200:80 --name unique-web-app-aws --restart unless-stopped -v /
                 <li>Database backup လုပ်ပြီးမှ deployment လုပ်ရမည်</li>
                 <li>Deployment အပြီးတွင် system health check လုပ်ရမည်</li>
               </ul>
+            </div>
+          </div>
+        </section>
+        <section id="database-backup" class="content-block">
+          <h2 class="myanmar-text">Database Backup လုပ်ငန်းစဉ်</h2>        
+
+          <div class="deployment-section">
+            <h3 class="myanmar-text">Database တစ်ခုလုံး Backup လုပ်ရန် (backup_fineract_db.sh)</h3>
+            <p class="myanmar-text">
+              ဤ script သည် 'fineract_unique' database တစ်ခုလုံးကို backup ပြုလုပ်ပေးပါသည်။ Script ကို run ရန် အောက်ပါ command ကို အသုံးပြုပါ။
+            </p>
+            <div class="code-block">
+              <pre><code># Full database backup 
+sudo ./backup_fineract_db.sh</code></pre>
+            </div>
+
+            <h3 class="myanmar-text"> သီးသန့် Table များ Backup လုပ်ရန် (backup_fineract_table.sh)</h3>
+            <p class="myanmar-text">
+              ဤ script သည် 'fineract_unique' database မှ သင် သတ်မှတ်ပေးလိုက်သော table များကိုသာ ရွေးချယ်၍ backup ပြုလုပ်ပေးပါသည်။ အသုံးပြုပုံမှာ script နောက်တွင် backup လုပ်လိုသော table အမည်များကို တစ်ခုပြီးတစ်ခု ရေးပေးရပါမည်။
+            </p>
+            <div class="code-block">
+              <h4>အသုံးပြုပုံ:</h4>
+              <pre><code># Backup specific tables (e.g., m_client, m_loan)
+sudo ./backup_fineract_table.sh m_client m_loan</code></pre>              
+            </div>
+          </div>      
+        </section>      
+      </div>
+    
+      <div *ngIf="currentSection === 'features-tasks'" class="content-section">
+        <h1 class="page-title myanmar-text">Features & Tasks</h1>
+
+        <section id="customize-features" class="content-block">
+          <h2 class="myanmar-text">Customize Features</h2>
+          <div class="table-container">
+            <table class="feature-table">
+              <thead>
+                <tr>
+                  <th>Feature</th>
+                  <th>Description</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let feature of customFeatures">
+                  <td>{{ feature.name }}</td>
+                  <td>{{ feature.description }}</td>
+                  <td><span class="status-badge" [ngClass]="feature.status.toLowerCase().replace(' ', '-')">{{ feature.status }}</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="tasks-required" class="content-block">
+          <h2 class="myanmar-text">Tasks Required to Do</h2>
+          <div class="task-list">
+            <div class="task-item" *ngFor="let task of requiredTasks">
+              <h3 class="myanmar-text">{{ task.title }}</h3>
+              <p class="myanmar-text">{{ task.description }}</p>
             </div>
           </div>
         </section>
